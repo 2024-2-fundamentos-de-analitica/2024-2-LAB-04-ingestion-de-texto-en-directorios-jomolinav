@@ -4,6 +4,109 @@
 """
 Escriba el codigo que ejecute la accion solicitada en cada pregunta.
 """
+import os 
+import pandas as pd
+
+rutatrain1 = "files/input/train/negative"
+rutatrain2 = "files/input/train/neutral"
+rutatrain3 = "files/input/train/positive"
+
+lista1 = os.listdir(rutatrain1)
+lista2 = os.listdir(rutatrain2)
+lista3 = os.listdir(rutatrain3)
+
+listf1frase = []
+listf1moods = []
+
+
+
+for a in lista1:
+    dir = rutatrain1 + "/" + a
+    with open(dir, "r", encoding="utf-8") as archivo:
+        texto = archivo.read()
+    listf1frase.append(texto)
+    listf1moods.append("negative")
+
+
+for a in lista2:
+    dir = rutatrain2 + "/" + a
+    with open(dir, "r", encoding="utf-8") as archivo:
+        texto = archivo.read()
+    listf1frase.append(texto)
+    listf1moods.append("neutral")
+
+for a in lista3:
+    dir = rutatrain3 + "/" + a
+    with open(dir, "r", encoding="utf-8") as archivo:
+        texto = archivo.read()
+    listf1frase.append(texto)
+    listf1moods.append("positive")
+
+
+
+data1 = {"phrase" : listf1frase, "target" : listf1moods}
+
+dataf1 = pd.DataFrame(data1)
+
+pathcsv1 = "files/output/train_dataset.csv"
+dataf1.to_csv(pathcsv1, index=False)
+
+
+
+
+
+#test_dataset.csv
+
+rutatrain1 = "files/input/test/negative"
+rutatrain2 = "files/input/test/neutral"
+rutatrain3 = "files/input/test/positive"
+
+lista1 = os.listdir(rutatrain1)
+lista2 = os.listdir(rutatrain2)
+lista3 = os.listdir(rutatrain3)
+
+listf1frase = []
+listf1moods = []
+
+
+
+for a in lista1:
+    dir = rutatrain1 + "/" + a
+    with open(dir, "r", encoding="utf-8") as archivo:
+        texto = archivo.read()
+    listf1frase.append(texto)
+    listf1moods.append("negative")
+
+
+for a in lista2:
+    dir = rutatrain2 + "/" + a
+    with open(dir, "r", encoding="utf-8") as archivo:
+        texto = archivo.read()
+    listf1frase.append(texto)
+    listf1moods.append("neutral")
+
+for a in lista3:
+    dir = rutatrain3 + "/" + a
+    with open(dir, "r", encoding="utf-8") as archivo:
+        texto = archivo.read()
+    listf1frase.append(texto)
+    listf1moods.append("positive")
+
+
+
+data1 = {"phrase" : listf1frase, "target" : listf1moods}
+
+dataf1 = pd.DataFrame(data1)
+
+pathcsv1 = "files/output/test_dataset.csv"
+dataf1.to_csv(pathcsv1, index=False)
+
+
+
+
+
+
+
 
 
 def pregunta_01():
